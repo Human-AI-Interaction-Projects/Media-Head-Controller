@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="head_con.css">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=1.0"
+    />
+    <meta name="description" content="example" />
+    <title>example</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Media Head Controller </h1>
+    </header>
+    <body>
+      Enter youtube video URL:
+      <input type="text" id="url" onkeyup="ifEnable()" value="" size="50">
+      <button id="submit" disabled>submit</button>
+      <div><br></div>
+    </body>
+    <script>
+      function ifEnable() {
+        if(document.getElementById("url").value.length > 0) {
+          document.getElementById('submit').disabled = false;
+        } else {
+          document.getElementById('submit').disabled = true;
+        }
+      }
+    </script>
+    <div id="video-placeholder"></div>
+
+    <div id="app">
+      Loading opencv.js
+    </div>
+    <canvas id="canvasOutput"></canvas>
+
+
+    <div><br></div>
+
+    <canvas id="myCanvas" > </canvas>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+
+       window.player;
+
+      function onYouTubeIframeAPIReady() {
+          window.player = new YT.Player('video-placeholder', {
+              width: 600,
+              height: 400,
+              videoId: '_6b-5mxXi2Q',
+              playerVars: {
+                  color: 'white',
+              },
+          });
+      }
+
+      $('#submit').on('click', function() {
+        var url = document.getElementById("url").value;
+        var vid = url.substring(url.indexOf("=")+1);
+        player.cueVideoById(vid);
+      });
+
+      var canv = document.getElementById("myCanvas");
+      canv.width = 200;
+      canv.height = 200;
+    </script>
+    <script src="dist/index.js"></script>
+
+    <!-- graphic code from CS174a -->
+          <script> window.tiny_graphics = {};
+                   window.classes = {}
+                   </script>
+
+          <script src="tiny-graphics.js" ></script>
+          <script src= "dependencies.js" ></script>
+          <script src=   "main-scene.js" ></script></head>
+          <body style="background: White">
+          <style>
+          * { font-family: monospace }
+          #main-canvas{ position: absolute;left:800px;
+            top: 200px;width: 200px; height: 200px; margin-bottom:3px; background-color: white}
+          </style>
+
+          <div id="main-canvas" class="canvas-widget"></div>
+          <script>
+            const scenes = [ "HCI209BK2"];
+            new Canvas_Widget( "main-canvas", scenes,false );
+          </script>
+  </body>
+</html>
