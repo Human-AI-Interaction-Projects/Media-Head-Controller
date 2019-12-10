@@ -14,7 +14,7 @@ Qiuyang Que 905231227<br />
 ### Build
 first clone the repository to local folder
 `git clone https://github.com/superraylin/Media-Head-Controller.git`<br />
-make sure Node.js is installed <br />
+make sure **Node.js** is installed <br />
 Run `npm start` in the folder
 
 ### Run
